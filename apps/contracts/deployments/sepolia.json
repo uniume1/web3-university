@@ -1,0 +1,7 @@
+{
+  "chainId": 11155111,
+  "deployedAtBlock": 0,
+  "UNIToken": "0xE8D3268314eA1e4Fc7d829d793Fbc4771BE70D65",
+  "MockUSDC": "0xed7D31ECd4CBb628aa98270Cd00700E4f1de03c7",
+  "CourseMarket": "0x20F516bDB1539d4d608E1EF72dB2754a680Cade2"
+}

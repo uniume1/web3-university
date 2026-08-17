@@ -1,0 +1,4 @@
+{
+  "extends": "@web3-school/config/tsconfig.base.json",
+  "include": ["src/**/*.ts", "src/**/*.json"]
+}

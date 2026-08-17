@@ -1,0 +1,43 @@
+{
+  "name": "web3-school",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "check-types": "turbo run check-types",
+    "dev:web": "turbo run dev -F web",
+    "dev:server": "turbo run dev -F server",
+    "db:push": "turbo run db:push -F @web3-school/db",
+    "db:studio": "turbo run db:studio -F @web3-school/db",
+    "db:generate": "turbo run db:generate -F @web3-school/db",
+    "db:migrate": "turbo run db:migrate -F @web3-school/db",
+    "deploy:setup": "vercel link",
+    "dev:vercel": "vercel dev -L",
+    "env:preview": "tsx scripts/sync-vercel-env.ts preview",
+    "env:production": "tsx scripts/sync-vercel-env.ts production",
+    "deploy": "vercel deploy",
+    "deploy:prod": "vercel deploy --prod",
+    "deploy:check": "vercel deploy --dry",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@web3-school/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.6",
+    "@types/node": "catalog:",
+    "@web3-school/config": "workspace:*",
+    "tsx": "catalog:",
+    "turbo": "^2.10.7",
+    "typescript": "catalog:",
+    "vercel": "^58.1.0"
+  },
+  "packageManager": "pnpm@11.7.0"
+}

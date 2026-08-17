@@ -1,0 +1,3 @@
+{
+  "extends": "@web3-school/config/tsconfig.base.json"
+}
