@@ -4,6 +4,15 @@
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
+			"env": [
+				"DATABASE_URL",
+				"CORS_ORIGIN",
+				"NODE_ENV",
+				"PRIVY_APP_ID",
+				"PRIVY_APP_SECRET",
+				"SEPOLIA_RPC_URL",
+				"COURSE_PROOF_SIGNER_PRIVATE_KEY"
+			],
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],
 			"outputs": ["dist/**", "out/**"]
 		},

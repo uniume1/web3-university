@@ -1,6 +1,8 @@
 {
 	"extends": "@web3-school/config/tsconfig.base.json",
 	"compilerOptions": {
+		"strict": true,
+		"strictNullChecks": true,
 		"composite": true,
 		"outDir": "dist",
 		"paths": {
