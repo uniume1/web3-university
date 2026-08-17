@@ -1,7 +1,7 @@
 import uniTokenAbiJson from "./abi/UNIToken.json" with { type: "json" }
 import courseMarketAbiJson from "./abi/CourseMarket.json" with { type: "json" }
 import certificateAbiJson from "./abi/CourseCertificate.json" with { type: "json" }
-
+export * from "./uniswap"
 export const CHAIN_ID = 11155111 as const
 export const ydTokenAbi = uniTokenAbiJson
 export const courseMarketAbi = courseMarketAbiJson
