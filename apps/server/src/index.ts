@@ -10,25 +10,25 @@ const app = new Hono();
 
 app.use(logger());
 app.use(
-  "/*",
-  cors({
-    origin: env.CORS_ORIGIN,
-    allowMethods: ["GET", "POST", "OPTIONS"],
-  }),
+	"/*",
+	cors({
+		origin: env.CORS_ORIGIN,
+		allowMethods: ["GET", "POST", "OPTIONS"],
+	}),
 );
 
 app.use(
-  "/trpc/*",
-  trpcServer({
-    router: appRouter,
-    createContext: (_opts, context) => {
-      return createContext({ context });
-    },
-  }),
+	"/trpc/*",
+	trpcServer({
+		router: appRouter,
+		createContext: (_opts, context) => {
+			return createContext({ context });
+		},
+	}),
 );
 
 app.get("/", (c) => {
-  return c.text("OK");
+	return c.text("OK");
 });
 
 import { serve } from "@hono/node-server";
@@ -36,13 +36,13 @@ import { serve } from "@hono/node-server";
 export default app;
 
 if (!process.env.VERCEL) {
-  serve(
-    {
-      fetch: app.fetch,
-      port: 3000,
-    },
-    (info) => {
-      console.log(`Server is running on http://localhost:${info.port}`);
-    },
-  );
+	serve(
+		{
+			fetch: app.fetch,
+			port: 3000,
+		},
+		(info) => {
+			console.log(`Server is running on http://localhost:${info.port}`);
+		},
+	);
 }

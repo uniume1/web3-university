@@ -1,10 +1,9 @@
 {
-  "name": "contracts",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "forge build",
-    "test": "forge test",
-    "check-types": "forge build"
-  }
+	"name": "contracts",
+	"private": true,
+	"scripts": {
+		"build": "forge build",
+		"test": "forge test",
+		"check-types": "forge build"
+	}
 }

@@ -1,6 +1,6 @@
-const format = require('../format-lines');
-const { fromBytes32, toBytes32 } = require('./conversion');
-const { SET_TYPES } = require('./Enumerable.opts');
+const format = require("../format-lines");
+const { fromBytes32, toBytes32 } = require("./conversion");
+const { SET_TYPES } = require("./Enumerable.opts");
 
 const header = `\
 pragma solidity ^0.8.24;
@@ -221,7 +221,7 @@ struct ${name} {
  * already present.
  */
 function add(${name} storage set, ${type} value) internal returns (bool) {
-    return _add(set._inner, ${toBytes32(type, 'value')});
+    return _add(set._inner, ${toBytes32(type, "value")});
 }
 
 /**
@@ -231,7 +231,7 @@ function add(${name} storage set, ${type} value) internal returns (bool) {
  * present.
  */
 function remove(${name} storage set, ${type} value) internal returns (bool) {
-    return _remove(set._inner, ${toBytes32(type, 'value')});
+    return _remove(set._inner, ${toBytes32(type, "value")});
 }
 
 /**
@@ -248,7 +248,7 @@ function clear(${name} storage set) internal {
  * @dev Returns true if the value is in the set. O(1).
  */
 function contains(${name} storage set, ${type} value) internal view returns (bool) {
-    return _contains(set._inner, ${toBytes32(type, 'value')});
+    return _contains(set._inner, ${toBytes32(type, "value")});
 }
 
 /**
@@ -288,7 +288,7 @@ function at(${name} storage set, uint256 index) internal view returns (${type}) 
  * Replacement of the deprecated {at} function.
  */
 function pos(${name} storage set, uint256 index) internal view returns (${type}) {
-    return ${fromBytes32(type, '_pos(set._inner, index)')};
+    return ${fromBytes32(type, "_pos(set._inner, index)")};
 }
 
 /**
@@ -495,14 +495,14 @@ function values(${name} storage set, uint256 start, uint256 end) internal view r
 
 // GENERATE
 module.exports = format(
-  header.trimEnd(),
-  'library EnumerableSet {',
-  format(
-    [].concat(
-      defaultSet,
-      SET_TYPES.filter(({ value }) => !value.memory).map(customSet),
-      SET_TYPES.filter(({ value }) => value.memory).map(memorySet),
-    ),
-  ).trimEnd(),
-  '}',
+	header.trimEnd(),
+	"library EnumerableSet {",
+	format(
+		[].concat(
+			defaultSet,
+			SET_TYPES.filter(({ value }) => !value.memory).map(customSet),
+			SET_TYPES.filter(({ value }) => value.memory).map(memorySet),
+		),
+	).trimEnd(),
+	"}",
 );
