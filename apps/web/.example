@@ -1,4 +1,4 @@
-VITE_SERVER_URL=http://localhost:3000
+VITE_SERVER_URL=https://web3-university-indol.vercel.app
 
 VITE_PRIVY_APP_ID=cmswmee5700a50bkzycz0uz38
 VITE_SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/alch_BCzZA7vJ7-Yg4IBrtlEaJ
