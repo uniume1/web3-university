@@ -1,11 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "apps/web/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "apps/web/dist"
-      }
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "outputDirectory": "apps/web/dist",
