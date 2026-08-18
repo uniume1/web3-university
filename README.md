@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # web3-school+1
+=======
+# web3-school+2
+>>>>>>> feature
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Router, Hono, TRPC, and more.
 
@@ -75,7 +79,12 @@ If you want to add app-specific blocks instead of shared primitives, run the sha
 
 ### Vercel Services
 
-- Target: web + server
+- Create one Vercel Project for the repository root and set its Framework Preset
+  to `Services`.
+- The `web` service serves `apps/web` at `/`.
+- The `api` service serves `apps/server` at `/api/*`.
+- Set `VITE_SERVER_URL=/api` for Preview and Production so the browser uses the
+  matching API from the same deployment.
 - Config: `vercel.json`
 - Link the project first: pnpm run deploy:setup
 - Local Vercel dev: pnpm run dev:vercel
@@ -84,7 +93,8 @@ If you want to add app-specific blocks instead of shared primitives, run the sha
 - Dry-run check (no upload): pnpm run deploy:check
 - Preview deploy: pnpm run deploy
 - Production deploy: pnpm run deploy:prod
-- Web requests under `/api/*` route to the server service and are rewritten before reaching the backend.
+- Vercel Services preserves the original path, so the server exposes tRPC at
+  `/api/trpc` for deployments and `/trpc` for standalone local development.
   Vercel Services share project environment variables, but deploys do not upload local `.env` files automatically. Link the project with `vercel link`, then run the env sync command before your first deploy (otherwise the deployment starts with no env vars), or pass one-off envs with `vercel deploy -e KEY=value`.
   Pass Vercel CLI flags to the env sync command directly, for example: `pnpm run env:production --scope your-team`.
 
