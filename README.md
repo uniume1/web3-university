@@ -1,4 +1,4 @@
-# web3-school
+# web3-school+2
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines React, TanStack Router, Hono, TRPC, and more.
 
@@ -30,7 +30,6 @@ This project uses PostgreSQL with Drizzle ORM.
 
 1. Make sure you have a PostgreSQL database set up.
 2. Update your `apps/server/.env` file with your PostgreSQL connection details.
-
 3. Apply the schema to your database:
 
 ```bash
@@ -65,7 +64,7 @@ npx shadcn@latest add accordion dialog popover sheet table -c packages/ui
 Import shared components like this:
 
 ```tsx
-import { Button } from "@web3-school/ui/components/button";
+import { Button } from "@web3-school/ui/components/button"
 ```
 
 ### Add app-specific blocks
