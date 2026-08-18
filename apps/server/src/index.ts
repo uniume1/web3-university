@@ -8,6 +8,15 @@ import { logger } from "hono/logger";
 
 const app = new Hono();
 
+const createTrpcMiddleware = (endpoint: string) =>
+	trpcServer({
+		endpoint,
+		router: appRouter,
+		createContext: (_opts, context) => {
+			return createContext({ context });
+		},
+	});
+
 app.use(logger());
 app.use(
 	"/*",
@@ -17,17 +26,18 @@ app.use(
 	}),
 );
 
-app.use(
-	"/trpc/*",
-	trpcServer({
-		router: appRouter,
-		createContext: (_opts, context) => {
-			return createContext({ context });
-		},
-	}),
-);
+app.use("/trpc/*", createTrpcMiddleware("/trpc"));
+
+// Vercel Services preserves the public request path when routing to a service.
+// Keep the unprefixed route above for the standalone local server, and expose
+// the same router below /api for the unified Vercel deployment.
+app.use("/api/trpc/*", createTrpcMiddleware("/api/trpc"));
 
 app.get("/", (c) => {
+	return c.text("OK");
+});
+
+app.get("/api", (c) => {
 	return c.text("OK");
 });
 
