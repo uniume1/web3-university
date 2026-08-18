@@ -1,15 +1,10 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "builds": [
     {
       "src": "apps/web/**",
@@ -17,10 +12,9 @@
       "config": {
         "distDir": "apps/web/dist"
       }
-    },
-    {
-      "src": "apps/server/src/index.ts",
-      "use": "@vercel/node"
     }
-  ]
+  ],
+  "outputDirectory": "apps/web/dist",
+  "buildCommand": "pnpm run build --filter=web --filter=server --filter=!contracts",
+  "installCommand": "pnpm install"
 }
